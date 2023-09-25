@@ -1,16 +1,17 @@
 #!/usr/bin/python3
-#Espoir Muhoza
-def text_indentation(text):
-    new_list = []
-    la_otra_lista = []
-    if type(text) is not str:
-        raise TypeError("text must be a string")
-    new_str1 = text.replace('.', '.\n\n')
-    new_str2 = new_str1.replace('?', '?\n\n')
-    new_str1 = new_str2.replace(':', ':\n\n')
-    new_str1 = new_str1.strip()
-    new_list = new_str1.split("\n")
-    for char in new_list:
-        la_otra_lista.append(char.strip())
-    print('\n'.join(la_otra_lista))
+"""text indent"""
 
+
+def text_indentation(text):
+    """text indent"""
+    if not isinstance(text, str):
+        raise TypeError("text must be a string")
+
+    for delimeter in "?:.":
+        words = (delimeter + "\n\n").join(
+                [index.strip(" ") for index in words.split(delimeter)])
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testfile("tests/5-text_indentation.txt")
